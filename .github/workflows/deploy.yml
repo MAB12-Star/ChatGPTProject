@@ -6,7 +6,7 @@ on:
       - master  # Change to your main branch if it's named differently
 
 permissions:
-  contents: write
+  contents: write  # Explicitly define permissions for contents
   pages: write
   actions: read
 
@@ -22,13 +22,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20.13.0'  # Use the version of Node.js you are using
+          node-version: '20.13.0'
 
       - name: Debug Info  # Debugging step
         run: |
           git config --list --show-origin
           git status
-          echo $GITHUB_TOKEN
 
       - name: Install dependencies
         run: npm install
