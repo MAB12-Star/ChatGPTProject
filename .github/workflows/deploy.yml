@@ -5,6 +5,11 @@ on:
     branches:
       - master  # Change to your main branch if it's named differently
 
+permissions:
+  contents: write
+  pages: write
+  actions: read
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -14,6 +19,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.13.0'  # Use the version of Node.js you are using
+
+      - name: Debug Info  # Debugging step
+        run: |
+          git config --list --show-origin
+          git status
+          echo $GITHUB_TOKEN
 
       - name: Install dependencies
         run: npm install
@@ -29,3 +44,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+
