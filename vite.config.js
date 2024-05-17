@@ -5,8 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/ChatGPTProject/',  // Replace with your repository name
-  build: {
-    rollupOptions: {
-      external: ['openai']
-    }}
+
 });
